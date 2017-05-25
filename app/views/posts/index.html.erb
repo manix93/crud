@@ -24,6 +24,7 @@
       <td><%= post.published ? "Tak" : "Nie" %></td>
       <td><%= post.body %></td>
       <td>
+        <%= link_to "Pokaż", post_path(post), class: "btn btn-default btn-xs" %>
       </td>
     </tr>
     <% end %>
