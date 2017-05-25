@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def new
-    @post = Post.new(author: session[:author])
+    @post = Post.new(author: session[:author], published: true)
   end
 
   def create
