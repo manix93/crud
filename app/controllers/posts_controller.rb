@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
+    flash[:notice] = "Post został dodany pomyślnie"
     redirect_to posts_path
   end
 
