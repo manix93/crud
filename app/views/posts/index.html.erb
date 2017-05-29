@@ -4,6 +4,11 @@
   <%= link_to "Dodaj nowy post", new_post_path, class: "btn btn-success" %>
 </p>
 
+<ul class="nav nav-tabs">
+  <li <% if params[:action] == "index" %>class="active"<% end %>><%= link_to "Wszystkie", posts_path %></li>
+  <li <% if params[:action] == "published" %>class="active"<% end %>><%= link_to "Opublikowane", published_posts_path %></li>
+</ul>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -26,7 +31,7 @@
       <td>
         <%= link_to "Pokaż", post_path(post), class: "btn btn-default btn-xs" %>
         <%= link_to "Edytuj", edit_post_path(post), class: "btn btn-info btn-xs" %>
-        <%= link_to "Usuń", post_path(post), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Na pewno usunąć?"} %>
+        <%= link_to "Usuń", confirm_destroy_post_path(post), class: "btn btn-danger btn-xs"%>
       </td>
     </tr>
     <% end %>

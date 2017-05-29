@@ -24,6 +24,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def confirm_destroy
+    @post = Post.find(params[:id])
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -37,6 +41,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+  end
+
+  def published
+    @posts = Post.where(published: true)
+    render action: 'index'
   end
 
   def show
