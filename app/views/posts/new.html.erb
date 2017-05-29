@@ -1,19 +1,2 @@
-<%= form_for @post do |p| %>
-  <div class="form-group">
-    <%= p.label :title, "Tytuł" %>
-    <%= p.text_field :title, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= p.label :author, "Autor" %>
-    <%= p.text_field :author, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= p.label :body, "Treść" %>
-    <%= p.text_area :body, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= p.label :published, "Opublikowany?" %>
-    <%= p.check_box :published, class: "form-control" %>
-  </div>
-  <%= p.submit "Dodaj wpis", class:"btn btn-primary" %>
-<% end %>
+<h3>Dodawanie nowego posta</h3>
+<%= render partial: "form", locals: { button_name: "Dodaj nowy wpis" } %>
