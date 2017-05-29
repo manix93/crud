@@ -12,12 +12,17 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    flash[:notice] = "Post został edytowany pomyślnie"
+    redirect_to posts_path
   end
 
   def destroy
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def index
