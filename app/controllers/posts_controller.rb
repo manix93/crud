@@ -25,6 +25,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post został pomyślnie usunięty"
+    redirect_to posts_path
   end
 
   def edit
