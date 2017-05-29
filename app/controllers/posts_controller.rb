@@ -5,17 +5,23 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    session[:author] = @post.author
-    flash[:notice] = "Post został dodany pomyślnie"
-    redirect_to posts_path
+    if @post.save
+      session[:author] = @post.author
+      flash[:notice] = "Post został dodany pomyślnie"
+      redirect_to posts_path
+    else
+      render action: 'new'
+    end
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.update_attributes(post_params)
-    flash[:notice] = "Post został edytowany pomyślnie"
-    redirect_to posts_path
+    if @post.update_attributes(post_params)
+      flash[:notice] = "Post został edytowany pomyślnie"
+      redirect_to posts_path
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
